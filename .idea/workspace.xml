@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ce0e9dd-597c-46ed-85e2-698ccf8c98cd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Section1/config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Section2/twitter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Section1" beforeDir="false" afterPath="$PROJECT_DIR$/Section1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Section1/twitter.go" beforeDir="false" afterPath="$PROJECT_DIR$/Section1/twitter.go" afterDir="false" />
@@ -32,7 +29,7 @@
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Section0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
