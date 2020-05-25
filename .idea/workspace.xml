@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Section1" beforeDir="false" afterPath="$PROJECT_DIR$/Section1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Section1/twitter.go" beforeDir="false" afterPath="$PROJECT_DIR$/Section1/twitter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Section2/twitter_CleanData.go" beforeDir="false" afterPath="$PROJECT_DIR$/Section2/twitter_CleanData.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +31,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Section0" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Section4" />
+      <recent name="$PROJECT_DIR$/Section3" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Section0" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

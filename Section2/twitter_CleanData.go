@@ -40,7 +40,7 @@ func main(){
 		accessToken, accessSecret, consumerKey, consumerSecret)
 	fmt.Println("Started the api ...")
 
-	searchResult, _ := api.GetSearch("deep learning",
+	searchResult, _ := api.GetSearch("Falcon 9",
 		url.Values{"result_type": []string{"popular"}})
 
 	fmt.Printf("Retrieved %v tweets\n",
