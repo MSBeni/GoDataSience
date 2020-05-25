@@ -1,23 +1,21 @@
 package main
 
 import (
+	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	"github.com/ChimeraCoder/anaconda"
 	"io/ioutil"
 	"net/url"
-	//"os"
+	"os"
+	"strconv"
 )
 
 var(
-	consumerKey = "zh8CBpJvq4plTsoY2ERkV45Be"
-	consumerSecret = "wj3gDQ3VDEjL5OWf2MMLSmgLHoUPujkh8589yGDUXUNGamFna0"
-	accessToken = "1214744656442994688-01PNTehLqJBhFykIYYcuAt48tBQUYY"
-	accessSecret = "wfFFbrTMiHutcqK7z7rvUeQ3Kn3aZEs5Pa4iqSiPS7RTi"
-	//consumerKey = os.Getenv("CONSUMER_KEY_TWITTER")
-	//consumerSecret = os.Getenv("CONSUMER_SECRET_TWITTER")
-	//accessToken = os.Getenv("ACCESS_KEY_TWITTER")
-	//accessSecret = os.Getenv("CONSUMER_SECRET_TWITTER")
+	consumerKey = os.Getenv("CONSUMER_KEY_TWITTER")
+	consumerSecret = os.Getenv("CONSUMER_SECRET_TWITTER")
+	accessToken = os.Getenv("ACCESS_KEY_TWITTER")
+	accessSecret = os.Getenv("CONSUMER_SECRET_TWITTER")
 )
 
 type cleanTweet struct {
@@ -58,21 +56,70 @@ func SaveTweetJSON(TweetsJSON []cleanTweet) error{
 	return nil
 }
 
-func LoadTweetsJSON() ([]cleanTweet, error){
-	fileData, err := ioutil.ReadFile("tweets.json")
+func SaveTweetsCSV(tweets []cleanTweet) error{
+	file, err := os.Create("tweets.csv")
 
+	defer file.Close()
 	if err != nil{
-		return CleanTweet, err
+		panic(err)
 	}
-	err = json.Unmarshal(fileData, &CleanTweet)
+
+	w := csv.NewWriter(file)
+	defer w.Flush()
+
+	err = w.Write([]string{
+		"Index", "ID", "Likes", "Retweets", "Language", "URL", "Text"})
 	if err != nil{
-		return CleanTweet, err
+		return err
 	}
-	return CleanTweet, nil
+
+	for idx, tweet := range tweets{
+		stringData := []string{strconv.Itoa(idx), tweet.Id,
+			strconv.Itoa(tweet.Likes),
+			strconv.Itoa(tweet.Retweets),
+			tweet.Language, tweet.URL, tweet.Text}
+		err = w.Write(stringData)
+		if err != nil{
+			return err
+		}
+	}
+	return nil
 }
 
+func LoadTweetCSV() ([]cleanTweet, error){
+	csvFile, err := os.Open("tweets.csv")
+
+	defer csvFile.Close()
+	if err != nil{
+		return CleanTweet, err
+	}
+
+	lines, err := csv.NewReader(csvFile).ReadAll()
+	if err != nil{
+		return CleanTweet, err
+	}
+	for idx, line := range lines{
+		if idx == 0{
+			continue
+		}
+		likecounts, _ := strconv.Atoi(line[3])
+		retweetcounts, _ := strconv.Atoi(line[3])
+		lineData := cleanTweet{
+			Id:       line[1],
+			Text:     line[2],
+			Likes:    likecounts,
+			Retweets: retweetcounts,
+			Language: line[5],
+			URL:      line[6],
+		}
+		CleanTweet = append(CleanTweet, lineData)
+	}
+	return CleanTweet, err
+}
+
+
 func main() {
-	Tweets, err:= LoadTweetsJSON()
+	Tweets, err:= LoadTweetCSV()
 	if err == nil{
 		fmt.Println("Loading Tweets First ..")
 		for _, t := range Tweets{
@@ -103,7 +150,7 @@ func main() {
 		}
 	}
 
-	err = SaveTweetJSON(TweetsForfile)
+	err = SaveTweetsCSV(TweetsForfile)
 	if err != nil {
 		fmt.Println("Error in saving tweets")
 	} else {
