@@ -23,14 +23,7 @@ func preProcess(text string) string{
 	// Find all characters that are not alphabets
 	reg := regexp.MustCompile("[^a-zA-Z]+")
 
-	// Replace those chars with spaces
-	text = reg.ReplaceAllString(text, " ")
-
-	// Lower case
-	text = strings.ToLower(text)
-
-	// Tokenize on whitespaces, while removing excess whitespaces
-	tokens := strings.Fields(text)
+	// Replace those chars with spaces := strings.Fields(text)
 
 	// Join the tokens back to string
 	return strings.Join(tokens, " ")
