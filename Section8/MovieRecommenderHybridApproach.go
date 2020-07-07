@@ -2,13 +2,7 @@ package main
 
 import (
 	R "GoDataScience/Section8/References"
-	//"encoding/csv"
 	"fmt"
-	//"math"
-	//"os"
-	//"sort"
-	//"strconv"
-	//"strings"
 )
 
 func main() {
